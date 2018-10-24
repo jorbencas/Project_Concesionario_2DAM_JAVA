@@ -72,7 +72,7 @@ public class Empleado {
 	}
 	@Override
 	public String toString() {
-		return "Empleado [tipo=" + tipo + ", id=" + id + ", nombre=" + nombre + ", apellido=" + apellido.toString() + ", dni="
+		return "\n Empleado [tipo=" + tipo + ", id=" + id + ", nombre=" + nombre + ", apellido=" + apellido.toString() + ", dni="
 				+ dni + ", dni_letra=" + dni_letra + ", telefono=" + telefono.toString() + ", tarjeta=" + tarjeta + "]";
 	}
 	

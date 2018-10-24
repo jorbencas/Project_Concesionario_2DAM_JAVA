@@ -47,10 +47,7 @@ public class DOM {
        
        
     public static String getValorEtiqueta(String etiqueta, Element empleados) {
-    	System.out.println(empleados);
     	Node value = empleados.getElementsByTagName(etiqueta).item(0);
-        System.out.println(empleados.getElementsByTagName(etiqueta).item(0));
-        //return value.getChildNodes().item(0).getNodeValue();
         return value.getChildNodes().item(0).getTextContent();
     }
     

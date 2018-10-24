@@ -2,6 +2,7 @@ package Controlador;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -12,8 +13,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import Modelo.Apellido;
 import Modelo.Concesionario;
 import Modelo.Constants;
+import Modelo.Empleado;
+import Modelo.Telefono;
+import Modelo.Vehiculo;
 
 public class Concesionario_CTRL extends DOM {
 
@@ -62,6 +67,16 @@ public class Concesionario_CTRL extends DOM {
 				conce.setEmpleados(Empleados_CTRL.llegir((Element) listempleados.item(i)));
 			}
 		}
+		
+		Element ventas = getElementEtiqueta(Constants.ET_VENTAS,elmconce);
+		NodeList listVehiculos = ventas.getChildNodes();
+		for (int i = 0; i < listVehiculos.getLength(); i++) {
+			if(listVehiculos.item(i).getNodeType() == Node.ELEMENT_NODE){
+				//System.out.println("...................................");
+				conce.setVentas(Vemtas_CTRL.llegir((Element) listVehiculos.item(i)));
+			}
+		}
+		
 		return conce;
 		
 	}
@@ -69,8 +84,41 @@ public class Concesionario_CTRL extends DOM {
 	public void enmagatzemar(Document doc, File file) throws TransformerException{
 		DOM.DOMaXML(doc,file);
 	}
-	/*
-	public static escriure(){
+	
+	public void escriure(Document doc, Concesionario conce){
 		
-	}*/
+		
+		Element elmconce = doc.createElement(Constants.ET_CONCESIONARIO);
+		
+		Element elmnombre = doc.createElement(Constants.ET_NOMBRE);
+		elmnombre.appendChild(doc.createTextNode(conce.getNom_conc()));
+		elmconce.appendChild(elmnombre);
+		
+		Element	elmciudad =	doc.createElement(Constants.ET_CIUDAD);
+		elmciudad.appendChild(doc.createTextNode(conce.getCiudad()));
+		elmconce.appendChild(elmciudad);
+		
+
+		Element elemtel = doc.createElement(Constants.ET_TELEFONO);
+		elemtel.appendChild(doc.createTextNode(String.valueOf(conce.getTelefono())));
+		elmconce.appendChild(elemtel);
+		
+		Empleados_CTRL.escribir(doc, elmconce, conce);
+		
+		doc.appendChild(elmconce);
+	}
+	
+	public Concesionario librosdeEjemplo(Concesionario conce){
+		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+		ArrayList<Vehiculo> ventas = new ArrayList<Vehiculo>();
+
+		Empleado empleadoinstancia = new Empleado("Fijo", 2, "Perico", "48605737", 'P', "Individual");
+		empleadoinstancia.setApellido(new Apellido("Ferrer", "Tortosa"));
+		empleadoinstancia.setTelefono( new Telefono("962913378","2365974158"));
+		empleados.add(empleadoinstancia);
+		conce = new Concesionario("Concesiion SL", "Ontinyent", 962913378, empleados,ventas);
+		
+		return conce;
+	}
+	
 }

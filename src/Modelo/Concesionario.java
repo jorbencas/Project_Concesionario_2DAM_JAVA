@@ -67,7 +67,7 @@ public class Concesionario {
 	@Override
 	public String toString() {
 		return "Concesionario [nom_conc=" + nom_conc + ", ciudad=" + ciudad + ", telefono=" + telefono + ", empleados="
-				+ empleados.toString() + "]";
+				+ empleados.toString() + ventas.toString() + "]";
 	}
 	
 	

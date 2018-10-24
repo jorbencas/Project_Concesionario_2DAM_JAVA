@@ -1,6 +1,8 @@
 package Vista;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,8 +22,8 @@ public class main {
 		File f1 = new File("cotxes.xml");
 		File f2 = new File("cotxes_Jorge_Beneyto_Castelló.xml");
 		Concesionario_CTRL conce = new Concesionario_CTRL();
-		Concesionario concesionario = null;
-		Concesionario concesionario2 = null;
+		Concesionario concesionario = new Concesionario();
+		Concesionario concesionario2 = new Concesionario();
 		Document doc = (Document) conce.recuperar(f1);
 		concesionario = conce.llegir(doc);
 		 
@@ -29,9 +31,38 @@ public class main {
 		
 		 DOM xtdom = new DOM();
 	     Document doc2 = (Document) xtdom.XMLaDOM();
-	     /*concesionario2.librosdeEjemplo(concesionario2);
-	     conce.escriure(doc2, concesionario2);*/
+	      conce.escriure(doc2,conce.librosdeEjemplo(concesionario2) );
 	     conce.enmagatzemar(doc2, f2);
+	     muestraFichero(f2);
 	}
+	
+	static void muestraFichero(File archivo) {
+
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        try {
+
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+
+            // Lectura del fichero
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
 
 }

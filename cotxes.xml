@@ -29,7 +29,6 @@
 				<movil>670514852</movil>
 				<fix>962653397</fix>
 			</telefonos>
-			<ventas>126000</ventas>
 			<tarjeta>2</tarjeta>
 		</empleado>
 		<empleado tipo="vendedor" id="2">
@@ -43,7 +42,6 @@
 				<movil>666822360</movil>
 				<movil>666822111</movil>
 			</telefonos>
-			<ventas>198000</ventas>
 			<tarjeta>2</tarjeta>
 		</empleado>
 		<empleado tipo="mecanic" id="3">
@@ -69,7 +67,6 @@
 			<telefonos>
 				<movil>666822458</movil>
 			</telefonos>
-			<ventas>201587</ventas>
 			<tarjeta>3</tarjeta>
 		</empleado>
 	</empleados>
