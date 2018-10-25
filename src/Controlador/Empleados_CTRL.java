@@ -76,7 +76,7 @@ public class Empleados_CTRL extends DOM {
 			Attr empleado_tipo = doc.createAttribute(Constants.ET_EMPLEADO_TIPO);
 			Attr empleado_id = doc.createAttribute(Constants.ET_EMPLEADO_ID);
 
-			empleado_tipo.setValue(conce.getEmpleados().get(0).getTipo());
+			empleado_tipo.setValue(conce.getEmpleados().get(i).getTipo());
 			empleado.setAttributeNode(empleado_tipo);
 
 			empleado.setAttributeNode(empleado_id);

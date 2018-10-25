@@ -103,6 +103,7 @@ public class Concesionario_CTRL extends DOM {
 		elmconce.appendChild(elemtel);
 		
 		Empleados_CTRL.escribir(doc, elmconce, conce);
+		Vemtas_CTRL.escribir(doc, elmconce, conce);
 		
 		doc.appendChild(elmconce);
 	}

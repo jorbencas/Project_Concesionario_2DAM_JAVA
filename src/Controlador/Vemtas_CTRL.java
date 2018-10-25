@@ -2,11 +2,13 @@ package Controlador;
 
 import java.util.ArrayList;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import Modelo.Concesionario;
 import Modelo.Constants;
+import Modelo.Empleado;
 import Modelo.Vehiculo;
 
 public class Vemtas_CTRL extends DOM {
@@ -32,8 +34,52 @@ public class Vemtas_CTRL extends DOM {
 	}
 	
 	public static void escribir(Document doc, Element elem_concessionario, Concesionario conce){
-		/*Element empleadonombre = doc.createElement(Constants.ET_EMPLEADO_NOMBRE);
-		empleadonombre.appendChild(doc.createTextNode(conce.getEmpleados().get(i).getNombre()));
-		empleado.appendChild(empleadonombre);*/
+		Element ventas = doc.createElement(Constants.ET_VENTAS);
+		
+		for(int i = 0; i < conce.getVentas().size(); i++){
+			Element vehiculo = doc.createElement(Constants.ET_VEHICULO);
+			vehiculo.appendChild(doc.createTextNode(conce.getEmpleados().get(i).getNombre()));
+			ventas.appendChild(vehiculo);
+			
+			Attr vehiculo_tipo = doc.createAttribute(Constants.ET_EMPLEADO_ID);
+			vehiculo_tipo.setValue(conce.getVentas().get(i).getTipo());
+			vehiculo.setAttributeNode(vehiculo_tipo);
+			
+			llervehiculo(doc,vehiculo, conce.getVentas().get(i));
+			
+		}
+		elem_concessionario.appendChild(ventas);
 	}
+	
+	public static void llervehiculo(Document doc, Element vehiculo, Vehiculo vehiculoinstancia){
+		Element matricula = doc.createElement(Constants.ET_MATRICULA);
+		matricula.appendChild(doc.createTextNode(vehiculoinstancia.getMatricula()));
+		vehiculo.appendChild(matricula);
+		
+		Element kilometros = doc.createElement(Constants.ET_KILOMETROS);
+		kilometros.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getKilometros())));
+		vehiculo.appendChild(kilometros);
+		
+		Element precio = doc.createElement(Constants.ET_PRECIO);
+		precio.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getPrecio())));
+		vehiculo.appendChild(precio);
+		
+		Element any = doc.createElement(Constants.ET_AÑO);
+		any.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getAny())));
+		vehiculo.appendChild(any);
+		
+		Element marca = doc.createElement(Constants.ET_MARCA);
+		marca.appendChild(doc.createTextNode(vehiculoinstancia.getMarca()));
+		vehiculo.appendChild(marca);
+		
+		Element modelo = doc.createElement(Constants.ET_MODELO);
+		modelo.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getModelo())));
+		vehiculo.appendChild(modelo);
+		
+		Element empleado = doc.createElement(Constants.ET_EMPLEADO);
+		empleado.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getEmpleado())));
+		vehiculo.appendChild(empleado);
+		
+	}
+	
 }
