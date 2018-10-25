@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <concesionario>
-	<nom_conc>Cotxes Segona Ma Germans Blai S.L.</nom_conc>
-	<ciudad>Bocairent</ciudad>
+	<nom_conc>Coches Segunda Andluzes S.L.</nom_conc>
+	<ciudad>Jaén</ciudad>
 	<telefono>962893365</telefono>
 	<empleados>
 		<empleado tipo="director">
@@ -14,7 +14,7 @@
 			<telefonos>
 				<movil>667895645</movil>
 				<movil>658457815</movil>
-				<fix>962396541</fix>
+				<fijo>962396541</fijo>
 			</telefonos>
 			<tarjeta>1</tarjeta>
 		</empleado>
@@ -27,7 +27,7 @@
 			<dni letra="S">36550124</dni>
 			<telefonos>
 				<movil>670514852</movil>
-				<fix>962653397</fix>
+				<fijo>962653397</fijo>
 			</telefonos>
 			<tarjeta>2</tarjeta>
 		</empleado>
@@ -44,7 +44,7 @@
 			</telefonos>
 			<tarjeta>2</tarjeta>
 		</empleado>
-		<empleado tipo="mecanic" id="3">
+		<empleado tipo="mecanico" id="3">
 			<nombre>Fernando</nombre>
 			<apellidos>
 				<primer_apellido>Benavent</primer_apellido>
@@ -53,7 +53,7 @@
 			<dni letra="T">40231192</dni>
 			<telefonos>
 				<movil>671226003</movil>
-				<fix>962358941</fix>
+				<fijo>962358941</fijo>
 			</telefonos>
 			<tarjeta>3</tarjeta>
 		</empleado>
@@ -71,11 +71,11 @@
 		</empleado>
 	</empleados>
 	<ventas>
-		<vehiculo tipo="turisme">
+		<vehiculo tipo="turismo">
 			<matricula>2156DVF</matricula>
 			<kilometros>23568</kilometros>
 			<precio>14000</precio>
-			<any>2006</any>
+			<año>2006</año>
 			<marca>Peugeot</marca>
 			<modelo>407</modelo>
 			<empleado>4</empleado>
@@ -84,16 +84,16 @@
 			<matricula>5589GBH</matricula>
 			<kilometros>16966</kilometros>
 			<precio>24500</precio>
-			<any>2010</any>
+			<año>2010</año>
 			<marca>Mercedes</marca>
 			<modelo>Vito</modelo>
 			<empleado>2</empleado>
 		</vehiculo>
-		<vehiculo tipo="turisme">
+		<vehiculo tipo="turismo">
 			<matricula>8879BSD</matricula>
 			<kilometros>85662</kilometros>
 			<precio>9000</precio>
-			<any>2000</any>
+			<año>2000</año>
 			<marca>Citroen</marca>
 			<modelo>Xara</modelo>
 			<empleado>4</empleado>

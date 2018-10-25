@@ -51,7 +51,7 @@ public class Empleados_CTRL extends DOM {
 	public static Telefono llegirtelefon(Element elem_telefonos){
 		Telefono tlf = null;
 		Element Mobil = getElementEtiqueta(Constants.ET_MOVIL, elem_telefonos); 
-		Element Fijo = 	getElementEtiqueta(Constants.ET_FIX, elem_telefonos);
+		Element Fijo = 	getElementEtiqueta(Constants.ET_FIJO, elem_telefonos);
 		String mobil = "";
 		String fijo = "";
 		
@@ -60,7 +60,7 @@ public class Empleados_CTRL extends DOM {
 		}
 		
 		if(Fijo != null){
-			fijo =  getValorEtiqueta(Constants.ET_FIX,elem_telefonos);
+			fijo =  getValorEtiqueta(Constants.ET_FIJO,elem_telefonos);
 		}
 		
 		tlf = new Telefono(mobil,fijo);
@@ -99,7 +99,7 @@ public class Empleados_CTRL extends DOM {
 			empleado.appendChild(dni);
 			
 			Element telefonos = doc.createElement(Constants.ET_TELEFONOS);
-			llegirtelefonos(doc, telefonos,conce.getEmpleados().get(i));
+			escriuretelefonos(doc, telefonos,conce.getEmpleados().get(i));
 			empleado.appendChild(telefonos);
 			Element tarjeta = doc.createElement(Constants.ET_TARJETA);
 			tarjeta.appendChild(doc.createTextNode(conce.getEmpleados().get(i).getTarjeta()));
@@ -108,7 +108,7 @@ public class Empleados_CTRL extends DOM {
 			empeados.appendChild(empleado);
 
 		}
-		System.out.println("Perello" + conce.getEmpleados().get(0).getTarjeta());
+		
 		elem_concessionario.appendChild(empeados);
 	}
 	
@@ -123,13 +123,13 @@ public class Empleados_CTRL extends DOM {
 		elem_apellidos.appendChild(segundo);
 	}
 	
-	public static void llegirtelefonos (Document doc, Element elem, Empleado empleadoinstancia){
+	public static void escriuretelefonos (Document doc, Element elem, Empleado empleadoinstancia){
 
 		Element telefono = doc.createElement(Constants.ET_TELEFONO);
 		telefono.appendChild(doc.createTextNode(empleadoinstancia.getTelefono().getTelefono()));
 		elem.appendChild(telefono);
 		
-		Element fix = doc.createElement(Constants.ET_FIX);
+		Element fix = doc.createElement(Constants.ET_FIJO);
 		fix.appendChild(doc.createTextNode(empleadoinstancia.getTelefono().getFijo()));
 		elem.appendChild(fix);
 		

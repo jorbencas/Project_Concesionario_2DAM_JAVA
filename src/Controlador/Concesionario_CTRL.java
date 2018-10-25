@@ -87,7 +87,6 @@ public class Concesionario_CTRL extends DOM {
 	
 	public void escriure(Document doc, Concesionario conce){
 		
-		
 		Element elmconce = doc.createElement(Constants.ET_CONCESIONARIO);
 		
 		Element elmnombre = doc.createElement(Constants.ET_NOMBRE);
@@ -108,7 +107,7 @@ public class Concesionario_CTRL extends DOM {
 		doc.appendChild(elmconce);
 	}
 	
-	public Concesionario librosdeEjemplo(Concesionario conce){
+	public Concesionario ConcesionariosdeEjemplo(Concesionario conce){
 		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 		ArrayList<Vehiculo> ventas = new ArrayList<Vehiculo>();
 

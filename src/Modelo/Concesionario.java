@@ -16,7 +16,6 @@ public class Concesionario {
 
 	public Concesionario(String nom_conc, String ciudad, int telefono, ArrayList<Empleado> empleados,
 			ArrayList<Vehiculo> ventas) {
-		super();
 		this.nom_conc = nom_conc;
 		this.ciudad = ciudad;
 		this.telefono = telefono;

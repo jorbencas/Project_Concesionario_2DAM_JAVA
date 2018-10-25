@@ -17,7 +17,7 @@ public class Constants {
 	public final static String ET_LETRA = "letra";
 	public final static String ET_TELEFONOS = "telefonos";
 	public final static String ET_MOVIL = "movil";
-	public final static String ET_FIX = "fix";
+	public final static String ET_FIJO = "fijo";
 	public final static String ET_TARJETA = "tarjeta";
 	public final static String ET_VENTAS = "ventas";
 	public final static String ET_VEHICULO = "vehiculo";
@@ -26,7 +26,6 @@ public class Constants {
 	public static final String ET_KILOMETROS = "kilometros";
 	public static final String ET_MARCA = "marca";
 	public static final String ET_PRECIO = "precio";
-	public static final String ET_ANY = "any";
+	public static final String ET_AÑO = "añy";
 	public static final String ET_MODELO = "modelo";
-	//Continuara...
 }
