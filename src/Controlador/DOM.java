@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
  */
 public class DOM {
     
-    public Document XMLaDOM() throws SAXException, IOException, ParserConfigurationException{
+    public static Document XMLaDOM() throws SAXException, IOException, ParserConfigurationException{
         Document documento = (Document) DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
         return documento;
     }

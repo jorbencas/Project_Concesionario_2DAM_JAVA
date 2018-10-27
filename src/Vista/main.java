@@ -29,11 +29,10 @@ public class main {
 		 
 		System.out.println(concesionario);
 		
-		 DOM xtdom = new DOM();
-	     Document doc2 = (Document) xtdom.XMLaDOM();
-	      conce.escriure(doc2,conce.ConcesionariosdeEjemplo(concesionario2) );
-	     conce.enmagatzemar(doc2, f2);
-	     muestraFichero(f2);
+		Document doc2 = (Document) conce.recuperar();
+	    conce.escriure(doc2,conce.ConcesionariosdeEjemplo(concesionario2) );
+	    conce.enmagatzemar(doc2, f2);
+	    muestraFichero(f2);
 	}
 	
 	static void muestraFichero(File archivo) {

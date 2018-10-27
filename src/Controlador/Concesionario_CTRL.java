@@ -47,6 +47,11 @@ public class Concesionario_CTRL extends DOM {
 		this.file = file;
 	}
 
+	public Document recuperar() throws SAXException, IOException, ParserConfigurationException{
+		Document doc = (Document) DOM.XMLaDOM();
+		return doc;
+	}
+	
 	public Document recuperar(File file) throws SAXException, IOException, ParserConfigurationException{
 		Document doc = null;
 		 doc = (Document) DOM.XMLaDOM(file);
@@ -111,11 +116,15 @@ public class Concesionario_CTRL extends DOM {
 	public Concesionario ConcesionariosdeEjemplo(Concesionario conce){
 		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 		ArrayList<Vehiculo> ventas = new ArrayList<Vehiculo>();
-
+		
+		Vehiculo vehiculoinstancia = new Vehiculo( "turismo",  "45f9kgp",350, 12500, 2005,  "Wolksvagen","58",2);
+		ventas.add(vehiculoinstancia);
+		
 		Empleado empleadoinstancia = new Empleado("Fijo", 2, "Perico", "48605737", 'P', "Individual");
 		empleadoinstancia.setApellido(new Apellido("Ferrer", "Tortosa"));
 		empleadoinstancia.setTelefono( new Telefono("962913378","2365974158"));
 		empleados.add(empleadoinstancia);
+		
 		conce = new Concesionario("Concesiion SL", "Ontinyent", 962913378, empleados,ventas);
 		
 		return conce;

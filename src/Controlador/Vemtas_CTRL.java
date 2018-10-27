@@ -21,12 +21,12 @@ public class Vemtas_CTRL extends DOM {
 		Vehiculo.setTipo(getAtributoEtiqueta(Constants.ET_VEHICULO_TIPO, elem_vehiculo));
 		System.out.println("Tipo:" + getAtributoEtiqueta(Constants.ET_VEHICULO_TIPO, elem_vehiculo));
 		Vehiculo.setMatricula(getValorEtiqueta(Constants.ET_MATRICULA, elem_vehiculo));
-		System.out.println("Matricula;" + Vehiculo.getMatricula());
+		System.out.println("Matricula: " + Vehiculo.getMatricula());
 		Vehiculo.setKilometros(Integer.parseInt(getValorEtiqueta(Constants.ET_KILOMETROS, elem_vehiculo)));
 		Vehiculo.setPrecio(Integer.parseInt(getValorEtiqueta(Constants.ET_PRECIO, elem_vehiculo)));
 		Vehiculo.setAny(Integer.parseInt(getValorEtiqueta(Constants.ET_AÑO, elem_vehiculo)));
 		Vehiculo.setMarca(getValorEtiqueta(Constants.ET_MARCA, elem_vehiculo));
-		//Vehiculo.setModelo(Integer.parseInt(getValorEtiqueta(Constants.ET_MODELO, elem_vehiculo)));
+		Vehiculo.setModelo(getValorEtiqueta(Constants.ET_MODELO, elem_vehiculo));
 		Vehiculo.setEmpleado(Integer.parseInt(getValorEtiqueta(Constants.ET_EMPLEADO, elem_vehiculo)));
 		
 		vehiculo.add(Vehiculo);
@@ -45,13 +45,13 @@ public class Vemtas_CTRL extends DOM {
 			vehiculo_tipo.setValue(conce.getVentas().get(i).getTipo());
 			vehiculo.setAttributeNode(vehiculo_tipo);
 			
-			llervehiculo(doc,vehiculo, conce.getVentas().get(i));
+			escriurevehiculo(doc,vehiculo, conce.getVentas().get(i));
 			
 		}
 		elem_concessionario.appendChild(ventas);
 	}
 	
-	public static void llervehiculo(Document doc, Element vehiculo, Vehiculo vehiculoinstancia){
+	public static void escriurevehiculo(Document doc, Element vehiculo, Vehiculo vehiculoinstancia){
 		Element matricula = doc.createElement(Constants.ET_MATRICULA);
 		matricula.appendChild(doc.createTextNode(vehiculoinstancia.getMatricula()));
 		vehiculo.appendChild(matricula);

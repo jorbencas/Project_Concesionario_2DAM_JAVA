@@ -26,6 +26,6 @@ public class Constants {
 	public static final String ET_KILOMETROS = "kilometros";
 	public static final String ET_MARCA = "marca";
 	public static final String ET_PRECIO = "precio";
-	public static final String ET_AÑO = "añy";
+	public static final String ET_AÑO = "anyo";
 	public static final String ET_MODELO = "modelo";
 }

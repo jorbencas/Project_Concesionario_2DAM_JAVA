@@ -20,7 +20,12 @@ public class Empleados_CTRL extends DOM {
 		ArrayList<Empleado> empleado = new ArrayList<Empleado>();
 		
 		empleadoinstancia.setTipo(getAtributoEtiqueta(Constants.ET_EMPLEADO_TIPO,el_empleado));
-		//empleadoinstancia.setId(Integer.parseInt(getAtributoEtiqueta(Constants.ET_EMPLEADO_ID,el_empleado)));
+
+		if (!empleadoinstancia.getTipo().equalsIgnoreCase("director")){
+			System.out.println(getAtributoEtiqueta(Constants.ET_EMPLEADO_ID,el_empleado));
+			empleadoinstancia.setId(Integer.parseInt(getAtributoEtiqueta(Constants.ET_EMPLEADO_ID,el_empleado)));
+		}
+		
 		empleadoinstancia.setNombre(getValorEtiqueta(Constants.ET_EMPLEADO_NOMBRE, el_empleado));
 		Element apellidos = getElementEtiqueta(Constants.ET_APELLIDOS, el_empleado);
 		empleadoinstancia.setApellido(llegirApellidos(apellidos));

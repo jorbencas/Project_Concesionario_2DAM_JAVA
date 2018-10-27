@@ -7,7 +7,7 @@ public class Vehiculo {
 	private int precio = 0;
 	private int any = 0;
 	private String marca = "";
-	private int modelo = 0;
+	private String modelo = "";
 	private int empleado = 0;
 	
 	
@@ -15,7 +15,7 @@ public class Vehiculo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vehiculo(String tipo, String matricula, int kilometros, int precio, int any, String marca, int modelo,
+	public Vehiculo(String tipo, String matricula, int kilometros, int precio, int any, String marca, String modelo,
 			int empleado) {
 		this.tipo = tipo;
 		this.matricula = matricula;
@@ -75,12 +75,12 @@ public class Vehiculo {
 		this.marca = marca;
 	}
 
-	public int getModelo() {
+	public String getModelo() {
 		return modelo;
 	}
 
-	public void setModelo(int modelo) {
-		this.modelo = modelo;
+	public void setModelo(String string) {
+		this.modelo = string;
 	}
 
 	public int getEmpleado() {
