@@ -21,7 +21,7 @@ public class main {
             // TODO Auto-generated method stub
             int opcion = 777;
             String ruta = "";
-            File f2 = new File("cotxes_Jorge_Beneyto_Castell�.xml");
+            File f2 = new File("cotxes_Jorge_Beneyto_Castello.xml");
             Concesionario_CTRL conce = new Concesionario_CTRL();
             Concesionario concesionario = new Concesionario();
             Concesionario concesionario2 = new Concesionario();
