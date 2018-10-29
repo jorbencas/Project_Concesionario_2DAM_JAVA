@@ -24,7 +24,7 @@ public class Vemtas_CTRL extends DOM {
 		System.out.println("Matricula: " + Vehiculo.getMatricula());
 		Vehiculo.setKilometros(Integer.parseInt(getValorEtiqueta(Constants.ET_KILOMETROS, elem_vehiculo)));
 		Vehiculo.setPrecio(Integer.parseInt(getValorEtiqueta(Constants.ET_PRECIO, elem_vehiculo)));
-		Vehiculo.setAny(Integer.parseInt(getValorEtiqueta(Constants.ET_AÑO, elem_vehiculo)));
+		Vehiculo.setAny(Integer.parseInt(getValorEtiqueta(Constants.ET_AnyO, elem_vehiculo)));
 		Vehiculo.setMarca(getValorEtiqueta(Constants.ET_MARCA, elem_vehiculo));
 		Vehiculo.setModelo(getValorEtiqueta(Constants.ET_MODELO, elem_vehiculo));
 		Vehiculo.setEmpleado(Integer.parseInt(getValorEtiqueta(Constants.ET_EMPLEADO, elem_vehiculo)));
@@ -64,7 +64,7 @@ public class Vemtas_CTRL extends DOM {
 		precio.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getPrecio())));
 		vehiculo.appendChild(precio);
 		
-		Element any = doc.createElement(Constants.ET_AÑO);
+		Element any = doc.createElement(Constants.ET_AnyO);
 		any.appendChild(doc.createTextNode(String.valueOf(vehiculoinstancia.getAny())));
 		vehiculo.appendChild(any);
 		
