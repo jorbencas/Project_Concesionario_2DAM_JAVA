@@ -15,13 +15,13 @@ import Controlador.Concesionario_CTRL;
 import Modelo.Concesionario;
 import java.util.Scanner;
 
-public class main {
+public class main_DOM {
 
 	public static void main(String[] args) throws SAXException, IOException, ParserConfigurationException, TransformerException {
             // TODO Auto-generated method stub
             int opcion = 777;
             String ruta = "";
-            File f2 = new File("cotxes_Jorge_Beneyto_Castello.xml");
+            File f2 = new File("cotxes_Jorge_Beneyto_Castell�.xml");
             Concesionario_CTRL conce = new Concesionario_CTRL();
             Concesionario concesionario = new Concesionario();
             Concesionario concesionario2 = new Concesionario();
@@ -39,15 +39,14 @@ public class main {
                         if (ruta.length() == 0) {
                             ruta = "cotxes.xml";
                         }
-                         doc =  conce.recuperar(new File(ruta));
+                         doc =  conce.recuperar(new File("cotxes.xml"));
                         break;
 
                     case 2:
                         concesionario = conce.llegir(doc);
                         break;
-
                     case 3:
-                        System.out.println(concesionario);
+                        System.out.println(conce.llegir(doc));
                         break;
 
                     case 4:

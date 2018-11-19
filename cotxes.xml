@@ -32,10 +32,10 @@
 			<tarjeta>2</tarjeta>
 		</empleado>
 		<empleado tipo="vendedor" id="2">
-			<nombre>Pere</nombre>
+			<nombre>Pedro</nombre>
 			<apellidos>
 				<primer_apellido>López</primer_apellido>
-				<segundo_apellido>Mareny</segundo_apellido>
+				<segundo_apellido>Moreno</segundo_apellido>
 			</apellidos>
 			<dni letra="H">21894577</dni>
 			<telefonos>
@@ -60,7 +60,7 @@
 		<empleado tipo="vendedor" id="4">
 			<nombre>Alberto</nombre>
 			<apellidos>
-				<primer_apellido>Marti</primer_apellido>
+				<primer_apellido>Martinez</primer_apellido>
 				<segundo_apellido>Gonzalez</segundo_apellido>
 			</apellidos>
 			<dni letra="J">51745875</dni>
@@ -95,7 +95,7 @@
 			<precio>9000</precio>
 			<anyo>2000</anyo>
 			<marca>Citroen</marca>
-			<modelo>Xara</modelo>
+			<modelo>Wolskvagen</modelo>
 			<empleado>4</empleado>
 		</vehiculo>
 	</ventas>	

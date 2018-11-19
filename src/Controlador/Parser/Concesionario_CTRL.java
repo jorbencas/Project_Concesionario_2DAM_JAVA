@@ -63,7 +63,7 @@ public class Concesionario_CTRL extends DOM {
 		Element elmconce = doc.getDocumentElement();
 		conce.setNom_conc(getValorEtiqueta(Constants.ET_NOMBRE,elmconce));
 		conce.setCiudad(getValorEtiqueta(Constants.ET_CIUDAD,elmconce));
-		conce.setTelefono(Integer.parseInt(getValorEtiqueta(Constants.ET_TELEFONO,elmconce)));
+		conce.setTelefono(getValorEtiqueta(Constants.ET_TELEFONO,elmconce));
 		Element empeados =  getElementEtiqueta(Constants.ET_EMPLEADOS,elmconce);
 		NodeList listempleados = empeados.getChildNodes();
 		
@@ -98,7 +98,7 @@ public class Concesionario_CTRL extends DOM {
 		elmnombre.appendChild(doc.createTextNode(conce.getNom_conc()));
 		elmconce.appendChild(elmnombre);
 		
-		Element	elmciudad =	doc.createElement(Constants.ET_CIUDAD);
+		Element	elmciudad = doc.createElement(Constants.ET_CIUDAD);
 		elmciudad.appendChild(doc.createTextNode(conce.getCiudad()));
 		elmconce.appendChild(elmciudad);
 		
@@ -125,7 +125,7 @@ public class Concesionario_CTRL extends DOM {
 		empleadoinstancia.setTelefono( new Telefono("962913378","2365974158"));
 		empleados.add(empleadoinstancia);
 		
-		conce = new Concesionario("Concesiion SL", "Ontinyent", 962913378, empleados,ventas);
+		conce = new Concesionario("Concesiion SL", "Ontinyent", "962913378", empleados,ventas);
 		
 		return conce;
 	}
