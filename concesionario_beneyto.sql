@@ -1,6 +1,6 @@
 CREATE TABLE empleado
 (
-    id integer(3) PRIMARY KEY NOT NULL,
+    id integer(3) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     tipo varChar(15),
     nombre varChar(15),
     primer_apellido varChar(25),
@@ -35,6 +35,6 @@ INSERT INTO empleado VALUES (0,"director","Alonso","Túria","Requena",56891231,'
 (3,"macanido","Fernando","Benavent","Perea",40231192,'T',671226003,0,962358941,3),
 (4,"vendedor","Alberto","Martinez","Gonzalez",51745875,'J',666822458,0,0,3);
 
-INSERT INTO vehiculo VALUES("2156DVF","turismo",23568,14000,2006,"Peugeot",407,4),
+INSERT INTO vehiculo VALUES("2156DVF","turismo",23568,14000,2006,"Peugeot",407,1),
 ("5589GBH","furgoneta",16966,24500,2010,"Mercedes","Vito",2),
 ("8879BSD","turismo",85662,9000,2000,"Citroen","Wolskvagen",4);

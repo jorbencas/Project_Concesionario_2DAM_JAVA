@@ -11,7 +11,7 @@ import javax.xml.transform.TransformerException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import Controlador.Concesionario_CTRL;
+import Controlador.Parser.Concesionario_CTRL;
 import Modelo.Concesionario;
 import java.util.Scanner;
 

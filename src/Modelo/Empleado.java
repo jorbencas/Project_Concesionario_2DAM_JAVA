@@ -62,7 +62,7 @@ public class Empleado {
 		return telefono;
 	}
 	public void setTelefono(Telefono telefono) {
-		this.telefono = new Telefono(telefono.getTelefono(),telefono.getFijo());
+		this.telefono = new Telefono(telefono.getTelefono1(),telefono.getTelefono2(),telefono.getFijo());
 	}
 	public String getTarjeta() {
 		return tarjeta;

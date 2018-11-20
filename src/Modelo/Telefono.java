@@ -1,22 +1,33 @@
 package Modelo;
 
 public class Telefono {
-	private String telefono = "";
+	private String telefono1 = "";
+        private String telefono2 = "";
 	private String fijo = "";
 	
-	public Telefono(String telefono, String fijo) {
+	public Telefono(String telefono1,String  telefono2, String fijo) {
 		super();
-		this.telefono = telefono;
+		this.telefono1 = telefono1;
+                this.telefono2 = telefono2;
 		this.fijo = fijo;
 	}
 	
-	public String getTelefono() {
-		return telefono;
+	public String getTelefono1() {
+		return telefono1;
 	}
 	
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefono1(String telefono1) {
+		this.telefono1 = telefono1;
 	}
+        
+        public String getTelefono2() {
+		return telefono2;
+	}
+	
+	public void setTelefono2(String telefono2) {
+		this.telefono2 = telefono2;
+	}
+        
 	
 	public String getFijo() {
 		return fijo;
@@ -28,7 +39,7 @@ public class Telefono {
 	
 	@Override
 	public String toString() {
-		return "Telefono [telefono=" + telefono + ", fijo=" + fijo + "]";
+		return "Telefono [telefono1=" + telefono1 + "telefono2=" + telefono2 + ", fijo=" + fijo + "]";
 	}
 	
 	

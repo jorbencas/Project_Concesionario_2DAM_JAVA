@@ -1,4 +1,4 @@
-package Controlador;
+package Controlador.Parser;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import Modelo.Constants;
 import Modelo.Empleado;
 import Modelo.Vehiculo;
 
-public class Vemtas_CTRL extends DOM {
+public class Vehiculos_CTRL extends DOM {
 
 	public static ArrayList<Vehiculo> llegir(Element elem_vehiculo){
 		Vehiculo Vehiculo = new Vehiculo();

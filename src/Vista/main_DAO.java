@@ -5,8 +5,9 @@
  */
 package Vista;
 
-import Controlador.DAO.Cargador_XML;
-import Controlador.DAO.Conceionario_DAO;
+import Controlador.DAO.Concesionario_DAO;
+import Controlador.DAO.Empleado_DAO;
+import Controlador.DAO.Vehiculo_DAO;
 import DAO.ConexionaDB;
 import Modelo.Concesionario;
 import Modelo.Empleado;
@@ -22,124 +23,25 @@ public class main_DAO {
 
     public static void main(String[] args) {
         try {
-
-            Cargador_XML xml = new Cargador_XML();
+            Concesionario_DAO cargaDAO = new Concesionario_DAO();
             ConexionaDB conexion_DB = null;
             Connection con = null;
             Concesionario concesionario = new Concesionario();
-            Conceionario_DAO clientedao = null;
             int opcion = 777;
-            int opcion2 = 777;
-            int opcion1 = 0;
-             String tipo = "";
-             
-             
-             
+           
             while (opcion != 0) {
                 mostrarmenu();
                 Scanner teclado = new Scanner(System.in);
                 opcion = teclado.nextInt();
                 switch (opcion) {
                     case 1:
-                        concesionario = xml.cargador("cotxes.xml");
-                        conexion_DB = new ConexionaDB();
-                        System.out.println("Abrir conexion");
-                        con = conexion_DB.abrirconexion();
-                        System.out.println("conexion abierta");
+                        concesionario = cargaDAO.cargador("cotxes.xml");
                         break;
                     case 2:
-                        System.out.println(concesionario.toString());
-                        clientedao = new Conceionario_DAO();
-
-                        for (int i = 0; i < concesionario.getEmpleados().size(); i++) {
-                            if (clientedao.selecionarempleado(con, concesionario.getEmpleados().get(i)) == false) {
-                                Empleado empleado = new Empleado();
-                                empleado = concesionario.getEmpleados().get(i);
-                                clientedao.crearempleado(con, empleado);
-                            } else {
-                                System.out.println("No se va ha insertar ningun empleado, ya que ya existe!!!");
-                            }
-                        }
-
-                        for (int i = 0; i < concesionario.getVentas().size(); i++) {
-                            if (clientedao.selecionarvehiculo(con, concesionario.getVentas().get(i)) == false) {
-                                Vehiculo vantas = new Vehiculo();
-                                vantas = concesionario.getVentas().get(i);
-                                clientedao.crearvehiculo(con, vantas);
-                            } else {
-                                System.out.println("No se va ha insertar ningun vehiculo, ya que ya existe!!");
-                            }
-
-                        }
+                        con = cargaDAO.cargamasiva(con, concesionario);
                         break;
                     case 3:
-                        mostraropciones();
-                        Scanner teclado1 = new Scanner(System.in);
-                        opcion1 = teclado1.nextInt();
-                        System.out.println("Eligue una opción: ");
-                       
-                        if (opcion1 == 1) {
-                            tipo = "Empleado";
-                        } else if (opcion1 == 2) {
-                            tipo = "Vehiculo";
-                        }
-
-                        while (opcion2 != 5) {
-                            mostrarmenucrud(tipo);
-                            Scanner teclado2 = new Scanner(System.in);
-                            opcion2 = teclado2.nextInt();
-                            System.out.println("Eligue una opción: ");
-                            switch (opcion2) {
-                                case 1:
-                                    if ( tipo == "Empleado") {
-                                        System.out.println("Hola " + tipo + " estas realizando la opcion de crear");
-                                    } else if (tipo == "Vehiculo") {
-                                        System.out.println("Hola " + tipo + " estas realizando la opcion de crear");
-                                    }
-                                    break;
-                                case 2:
-                                    if ( tipo == "Empleado") {
-                                       System.out.println("Hola " + tipo + " estas realizando la opcion de ");
-                                    } else if (tipo == "Vehiculo") {
-                                       System.out.println("Hola " + tipo + " estas realizando la opcion de ");
-                                    }
-                                    break;
-                                case 3:
-                                    if ( tipo == "Empleado") {
-                                        System.out.println("Hola " + tipo + " estas realizando la opcion de Actualizar");
-                                    } else if (tipo == "Vehiculo") {
-                                        System.out.println("Hola " + tipo + " estas realizando la opcion de Actualizar");
-                                    }
-                                    break;
-                                case 4:
-                                    if ( tipo == "Empleado") {
-                                        System.out.println("Hola " + tipo + " estas realizando la opcion de borrar");
-                                    } else if (tipo == "Vehiculo") {
-                                        System.out.println("Hola " + tipo + " estas realizando la opcion de borrar");
-                                    }
-                                    break;
-                                default:
-                                    System.out.println("Adios");
-                                    break;
-                            }
-                        }
-
-                        /* Cliente_DAO clientedao = new Cliente_DAO();
-            
-                            Cliente clienteinsert = new Cliente(88,"Alex","Ramiro","gines","Aleragi","4022");
-                            //clientedao.crear(con, clienteinsert);
-            
-                            Cliente clienteupdate = new Cliente(14,"Andres","Ramiro","Pajares","Andrapa","1234");
-                            clienteupdate.setMoroso(true);
-                            // clientedao.actualitza(con, clienteupdate);
-                            // clientedao.findByDNI(con, clienteupdate);
-                            clientedao.findByNick(con, clienteupdate);
-
-                            Cliente clientedelete = new Cliente();
-                            clientedelete.setDNI(89);
-                            clientedao.borrarempleado(con, clientedelete);
-                        
-                         */
+                        menuCRUD(con);
                         break;
                     case 4:
                         System.out.println("cerrar conexión");
@@ -149,7 +51,6 @@ public class main_DAO {
                     default:
                         System.out.println("Adios");
                         System.exit(0);
-                        ;
                 }
             }
 
@@ -159,10 +60,10 @@ public class main_DAO {
     }
 
     static void mostrarmenu() {
-        System.out.println("1 - Abriendo la conexión a la base de datos");
-        System.out.println("2 - Obtenendo datos de la base de datos y guardado los como objetos en las clases");
+        System.out.println("1 - Cargar de xml a objeto y abriendo la conexión a la base de datos");
+        System.out.println("2 - Pasar de objeto a Base de datos");
         System.out.println("3 - Operaciones CRUD");
-        System.out.println("4 - cERRANDO CONEXIÓN A LA BASE DE DATOS");
+        System.out.println("4 - Cerrando a conexión a la base de datos");
     }
 
     static void mostrarmenucrud(String tipo) {
@@ -174,7 +75,119 @@ public class main_DAO {
     }
 
     private static void mostraropciones() {
-         System.out.println("1 - Empleado");
-         System.out.println("2 - Vehiculo");
+        System.out.println("1 - Empleado");
+        System.out.println("2 - Vehiculo");
+    }
+    
+    static void menuCRUD(Connection con) throws Exception{
+         int opcion2 = 777;
+            int opcion1 = 0;
+            String tipo = "";
+            Empleado_DAO emp = new Empleado_DAO();
+            Vehiculo_DAO venta = new Vehiculo_DAO();
+            Empleado empleado = null;
+            Vehiculo vehiculo = null;
+            
+         mostraropciones();
+                        Scanner teclado1 = new Scanner(System.in);
+                        opcion1 = teclado1.nextInt();
+                        System.out.println("Eligue una opción: ");
+
+                        if (opcion1 == 1) {
+                            tipo = "Empleado";
+                        } else if (opcion1 == 2) {
+                            tipo = "Vehiculo";
+                        }
+
+                        while (opcion2 != 5) {
+                            String elección = "";
+                            mostrarmenucrud(tipo);
+                            Scanner teclado2 = new Scanner(System.in);
+                            opcion2 = teclado2.nextInt();
+                            System.out.println("Eligue una opción: ");
+                            switch (opcion2) {
+                                case 1:
+                                    if (tipo == "Empleado") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de crear");
+                                        System.out.println("Escribe el dni del empleado");
+                                        Scanner tecladoec = new Scanner(System.in);
+                                        elección = tecladoec.nextLine();
+                                        empleado = new Empleado();
+                                        empleado.setDni(elección);
+                                        emp.crearempleado(con, empleado);
+                                    } else if (tipo == "Vehiculo") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de crear");
+                                        System.out.println("Escribe la matricula del vehiculo");
+                                        Scanner tecladoec = new Scanner(System.in);
+                                        elección = tecladoec.nextLine();
+                                        vehiculo = new Vehiculo();
+                                        vehiculo.setMatricula(elección);
+                                        venta.crearvehiculo(con, vehiculo);
+                                    }
+                                    break;
+                                case 2:
+                                    if (tipo == "Empleado") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de ");
+                                        emp.selecionarempleados(con);
+                                    } else if (tipo == "Vehiculo") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de ");
+                                        venta.selecionarvehiculos(con);
+                                    }
+                                    break;
+                                case 3:
+                                    if (tipo == "Empleado") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de Actualizar");
+                                        System.out.println("Escribe el dni del empleado");
+                                        Scanner tecladoec = new Scanner(System.in);
+                                        elección = tecladoec.nextLine();
+                                        if (emp.findByDNI(con, elección) != null) {
+                                            empleado = new Empleado();
+                                            empleado.setDni(elección);
+                                            emp.actualitza(con, empleado);
+                                            System.out.println("empleado actualizado");
+                                        }
+                                    } else if (tipo == "Vehiculo") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de Actualizar");
+                                        System.out.println("Escribe la matricula del vehiculo");
+                                        Scanner tecladoec = new Scanner(System.in);
+                                        elección = tecladoec.nextLine();
+                                        if (venta.findbyMatricula(con, elección) != null) {
+                                            vehiculo = new Vehiculo();
+                                            vehiculo.setMatricula(elección);
+                                            venta.actualitza(con, vehiculo);
+                                            System.out.println("Vehiculo actualizado");
+                                        }
+                                    }
+                                    break;
+                                case 4:
+                                    if (tipo == "Empleado") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de borrar");
+                                        System.out.println("Escribe el dni del empleado");
+                                        Scanner tecladoec = new Scanner(System.in);
+                                        elección = tecladoec.nextLine();
+                                        if (emp.findByDNI(con, elección) != null) {
+                                            empleado = new Empleado();
+                                            empleado.setDni(elección);
+                                            emp.borrarempleado(con, empleado);
+                                            System.out.println("empleado borrado");
+                                        }
+                                    } else if (tipo == "Vehiculo") {
+                                        System.out.println("Hola " + tipo + " estas realizando la opcion de borrar");
+                                        System.out.println("Escribe la matricula del vehiculo");
+                                        Scanner tecladoec = new Scanner(System.in);
+                                        elección = tecladoec.nextLine();
+                                        if (venta.findbyMatricula(con, elección) != null) {
+                                            vehiculo = new Vehiculo();
+                                            vehiculo.setMatricula(elección);
+                                            venta.borrarvehiculo(con, vehiculo);
+                                            System.out.println("Vehiculo borrado");
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    System.out.println("Adios");
+                                    break;
+                            }
+                        }
     }
 }

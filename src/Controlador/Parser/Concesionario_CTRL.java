@@ -1,5 +1,6 @@
-package Controlador;
+package Controlador.Parser;
 
+import Controlador.Parser.Vehiculos_CTRL;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class Concesionario_CTRL extends DOM {
 		for (int i = 0; i < listVehiculos.getLength(); i++) {
 			if(listVehiculos.item(i).getNodeType() == Node.ELEMENT_NODE){
 				//System.out.println("...................................");
-				conce.setVentas(Vemtas_CTRL.llegir((Element) listVehiculos.item(i)));
+				conce.setVentas(Vehiculos_CTRL.llegir((Element) listVehiculos.item(i)));
 			}
 		}
 		
@@ -108,7 +109,7 @@ public class Concesionario_CTRL extends DOM {
 		elmconce.appendChild(elemtel);
 		
 		Empleados_CTRL.escribir(doc, elmconce, conce);
-		Vemtas_CTRL.escribir(doc, elmconce, conce);
+		Vehiculos_CTRL.escribir(doc, elmconce, conce);
 		
 		doc.appendChild(elmconce);
 	}
@@ -122,7 +123,7 @@ public class Concesionario_CTRL extends DOM {
 		
 		Empleado empleadoinstancia = new Empleado("Fijo", 2, "Perico", "48605737", 'P', "Individual");
 		empleadoinstancia.setApellido(new Apellido("Ferrer", "Tortosa"));
-		empleadoinstancia.setTelefono( new Telefono("962913378","2365974158"));
+		empleadoinstancia.setTelefono( new Telefono("962913378","962584963","2365974158"));
 		empleados.add(empleadoinstancia);
 		
 		conce = new Concesionario("Concesiion SL", "Ontinyent", "962913378", empleados,ventas);
