@@ -33,9 +33,7 @@ public class Empleado_DAO {
             stmt.setString(2, empleado.getNombre());
             stmt.setString(3, empleado.getApellido().getPrimero());
             stmt.setString(4, empleado.getApellido().getSegundo());
-            if(emp.findByDNI(con, empleado.getDni()) == null){
-                stmt.setString(5, empleado.getDni());
-            }
+            stmt.setString(5, empleado.getDni());
             stmt.setString(6, String.valueOf(empleado.getDni_letra()));
             stmt.setString(7, empleado.getTelefono().getTelefono1());
             stmt.setString(8, empleado.getTelefono().getTelefono2());

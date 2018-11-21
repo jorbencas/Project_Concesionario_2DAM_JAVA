@@ -16,7 +16,7 @@ public class ConexionaDB {
     public Connection abrirconexion() throws ClassNotFoundException {
         Connection con = null;
         try {
-             Class.forName("com.mysql.jdbc.Driver");//cargar el driver
+            Class.forName("com.mysql.jdbc.Driver");//cargar el driver
             String urljdbc="jdbc:mysql://localhost:3306/concesionario_beneyto";
             con=(java.sql.DriverManager.getConnection(urljdbc,"concesionario_beneyto","concesionario_beneyto"));
             
@@ -33,7 +33,7 @@ public class ConexionaDB {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            //Throw new Exception("Ha sido imposible cerrar la conexión" + e.getMessage());
+            throw new Exception("Ha sido imposible cerrar la conexión" + e.getMessage());
         }
     }
 }
