@@ -142,7 +142,7 @@ public class EmpleadoController {
             empleado.setSegundoApellido(request.getParameter("segundo"));
             empleado.setDni(request.getParameter("dni"));
             empleado.setDni_letra(request.getParameter("dni_letra"));
-            empleado.setTipo(request.getParameter("tupo"));
+            empleado.setTipo(request.getParameter("tipo"));
             empleado.setTelefono1(request.getParameter("telefono1"));
             empleado.setTelefono2(request.getParameter("telefono2"));
             empleado.setFijo(request.getParameter("fijo"));
@@ -192,7 +192,7 @@ public class EmpleadoController {
             empleado.setSegundoApellido(request.getParameter("segundo"));
             empleado.setDni(request.getParameter("dni"));
             empleado.setDni_letra(request.getParameter("dni_letra"));
-            empleado.setTipo(request.getParameter("tupo"));
+            empleado.setTipo(request.getParameter("tipo"));
             empleado.setTelefono1(request.getParameter("telefono1"));
             empleado.setTelefono2(request.getParameter("telefono2"));
             empleado.setFijo(request.getParameter("fijo"));

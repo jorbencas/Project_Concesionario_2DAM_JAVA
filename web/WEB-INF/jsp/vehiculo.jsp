@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="offset1 span10 well">
-                <h3>Empleado</h3>
+                <h3>Vehiculo</h3>
                 <form action="<%=urlAction%>" method="post" >
                     <fieldset>
                         <label class="control-label" for="matricula">Matricula:</label>
@@ -69,6 +69,12 @@
                         <label class="control-label" for="modelo">Modelo</label>
                         <input class="input-xlarge" id="modelo" type="text" name="modelo" value="${vehiculo.modelo}" >
                         
+                        <label class="control-label" for="marca">Marca</label>
+                        <input class="input-xlarge" id="marca" type="text" name="marca" value="${vehiculo.marca}" >
+                        
+                        
+                        <label class="control-label" for="empleado">ID</label>
+                        <input class="input-xlarge" id="empleado" type="text" name="empleado" value="${vehiculo.empleado.id}" >
                     </fieldset>
                     <% if (request.getAttribute("bussinessMessages") != null) {%>
                     <div class="alert alert-error alert-block">
@@ -88,7 +94,7 @@
                     <%} %>
                     <div class="form-actions">
                         <button id="aceptarBtn" class="btn btn-primary" type="submit"><%=labelButton%></button>
-                        <a class="btn" href="<%=request.getContextPath()%>/index2.html" >Cancelar</a>
+                        <a class="btn" href="<%=request.getContextPath()%>/index3.html" >Cancelar</a>
                     </div>
                 </form>
             </div>

@@ -72,16 +72,16 @@ public class VehiculoController {
         String viewName;
 
         try {
-            int id;
+            String matricula;
             try {
-                id = Integer.parseInt(request.getParameter("id"));
+                matricula = request.getParameter("matricula");
             } catch (NumberFormatException nfe) {
                 throw new BussinessException(new BussinessMessage(null,"Se debe escribir un Id válido"));
             }
 
-            Vehiculo vehiculo = vehiculoDAO.get(id);
+            Vehiculo vehiculo = vehiculoDAO.get(matricula);
             if (vehiculo == null) {
-                throw new BussinessException(new BussinessMessage(null, "No existe el vehiculo con id=" + id));
+                throw new BussinessException(new BussinessMessage(null, "No existe el vehiculo con matricula=" + matricula));
             }
             model.put("formOperation", FormOperation.Update);
             model.put("vehiculo", vehiculo);
@@ -100,16 +100,16 @@ public class VehiculoController {
         Map<String, Object> model = new HashMap<String, Object>();
         String viewName;
         try {
-            int id;
+            String matricula;
             try {
-                id = Integer.parseInt(request.getParameter("id"));
+                matricula = request.getParameter("matricula");
             } catch (NumberFormatException nfe) {
                 throw new BussinessException(new BussinessMessage(null,"Se debe escribir un Id válido"));
             }
 
-            Vehiculo vehiculo = vehiculoDAO.get(id);
+            Vehiculo vehiculo = vehiculoDAO.get(matricula);
             if (vehiculo == null) {
-                throw new BussinessException(new BussinessMessage(null, "No existe el profesor con id=" + id));
+                throw new BussinessException(new BussinessMessage(null, "No existe el vehiculo con matricula=" + matricula));
             }
             model.put("formOperation", FormOperation.Delete);
             model.put("vehiculo", vehiculo);
@@ -143,7 +143,8 @@ public class VehiculoController {
             vehiculo.setPrecio(Integer.parseInt(request.getParameter("precio")));
             vehiculo.setAnyo(Integer.parseInt(request.getParameter("anyo")));
             vehiculo.setMarca(request.getParameter("marca"));
-            vehiculo.setModelo(request.getParameter("tupo"));
+            vehiculo.setTipo(request.getParameter("tipo"));
+            vehiculo.setModelo(request.getParameter("modelo"));
            
             Empleado emp = new Empleado();
             emp.setId(Integer.parseInt(request.getParameter("empleado")));
@@ -152,7 +153,7 @@ public class VehiculoController {
             
             vehiculoDAO.saveOrUpdate(vehiculo);
 
-            viewName = "redirect:/index.html";
+            viewName = "redirect:/index3.html";
         } catch (BussinessException ex) {
             model.put("bussinessMessages", ex.getBussinessMessages());
             if (vehiculo!=null) {
@@ -181,11 +182,11 @@ public class VehiculoController {
         try {
            String matricula;
             try {
-                matricula = request.getParameter("id");
+                matricula = request.getParameter("matricula");
             } catch (NumberFormatException nfe) {
                 throw new BussinessException(new BussinessMessage(null,"Se debe escribir un Id válido"));
             }
-            //vehiculo = vehiculoDAO.get(matricula);
+            vehiculo = vehiculoDAO.get(matricula);
             if (vehiculo == null) {
                 throw new BussinessException(new BussinessMessage(null, "Ya no existe el profesor."));
             }
@@ -194,9 +195,10 @@ public class VehiculoController {
             vehiculo.setPrecio(Integer.parseInt(request.getParameter("precio")));
             vehiculo.setAnyo(Integer.parseInt(request.getParameter("anyo")));
             vehiculo.setMarca(request.getParameter("marca"));
-            vehiculo.setModelo(request.getParameter("tupo"));
-           
-            Empleado emp = new Empleado();
+            vehiculo.setTipo(request.getParameter("tipo"));
+            vehiculo.setModelo(request.getParameter("modelo"));
+            
+           Empleado emp = new Empleado();
             emp.setId(Integer.parseInt(request.getParameter("empleado")));
             vehiculo.setEmpleado(emp);
            
@@ -204,7 +206,7 @@ public class VehiculoController {
             vehiculoDAO.saveOrUpdate(vehiculo);
             vehiculoDAO.saveOrUpdate(vehiculo);
 
-            viewName = "redirect:/index.html";
+            viewName = "redirect:/index3.html";
         } catch (BussinessException ex) {
             model.put("bussinessMessages", ex.getBussinessMessages());
             model.put("vehiculo", vehiculo);
@@ -222,20 +224,20 @@ public class VehiculoController {
 
         Vehiculo vehiculo=null;
         try {
-            int id;
+            String matricula;
             try {
-                id = Integer.parseInt(request.getParameter("id"));
+                matricula = request.getParameter("matricula");
             } catch (NumberFormatException nfe) {
                 throw new BussinessException(new BussinessMessage(null,"Se debe escribir un Id válido"));
             }
-            vehiculo = vehiculoDAO.get(id);
+            vehiculo = vehiculoDAO.get(matricula);
             if (vehiculo == null) {
                 throw new BussinessException(new BussinessMessage(null, "Ya no existe el profesor a borrar"));
             }
 
-            vehiculoDAO.delete(id);
+            vehiculoDAO.delete(matricula);
 
-            viewName = "redirect:/index.html";
+            viewName = "redirect:/index3.html";
         } catch (BussinessException ex) {
             model.put("bussinessMessages", ex.getBussinessMessages());
             model.put("vehiculo", vehiculo);
